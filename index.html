@@ -1,0 +1,1252 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff8f0">
+<meta name="description" content="Seoul Kitchen - Nikmati lezatnya kuliner Korea.">
+<title>Seoul Kitchen | Korean Food</title>
+
+<style>
+:root {
+  --red: #ed3547;
+  --red-dark: #c92337;
+  --black: #191919;
+  --cream: #fff8f0;
+  --paper: #ffffff;
+  --text: #202020;
+  --muted: #777;
+  --line: #eadbd0;
+  --soft: #f8eee5;
+  --shadow: 0 8px 25px #4425150d;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.6;
+}
+body.dark {
+  --cream: #191919;
+  --paper: #242424;
+  --text: #f8f2eb;
+  --muted: #b8b0a9;
+  --line: #414141;
+  --soft: #303030;
+  --shadow: 0 8px 25px #0003;
+  --theme: #191919;
+}
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+.container { width: min(1120px, 92%); margin: auto; }
+.section { padding: 65px 0; border-bottom: 1px solid var(--line); }
+.section:last-child { border-bottom: 0; }
+.section-heading { text-align: center; margin-bottom: 28px; }
+.eyebrow {
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: 800;
+}
+h1, h2, h3, p { margin-top: 0; }
+h2 { font-size: clamp(25px, 4vw, 34px); line-height: 1.25; margin: 7px 0 12px; }
+.muted { color: var(--muted); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--text);
+  font-weight: 700;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--red); color: white; border-color: var(--red); }
+.btn-primary:hover { background: var(--red-dark); }
+.btn-dark { background: var(--black); color: white; border-color: var(--black); }
+.btn-small { padding: 8px 11px; border-radius: 9px; font-size: 13px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+/* NAVIGASI */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.brand-icon {
+  width: 43px; height: 43px; display: grid; place-items: center;
+  background: var(--red); color: white; border-radius: 14px; font-size: 23px;
+}
+.brand strong { display: block; font-size: 15px; line-height: 1.2; }
+.brand small { color: var(--red); letter-spacing: 2px; font-size: 9px; font-weight: bold; }
+.nav-links { display: flex; align-items: center; gap: 18px; font-size: 13px; font-weight: 700; }
+.nav-links a:hover { color: var(--red); }
+.nav-actions { display: flex; align-items: center; gap: 7px; }
+.icon-btn {
+  width: 39px; height: 39px; border-radius: 11px;
+  border: 1px solid var(--line); background: var(--paper); color: var(--text);
+  position: relative;
+}
+.cart-count {
+  position: absolute; top: -6px; right: -5px;
+  background: var(--red); color: white; border-radius: 20px;
+  font-size: 10px; min-width: 18px; height: 18px;
+  display: grid; place-items: center;
+}
+.mobile-toggle { display: none; }
+
+/* HERO */
+.hero { padding: 62px 0 54px; border-bottom: 1px solid var(--line); }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 42px; align-items: center; }
+.pill {
+  display: inline-block; border: 1px solid #f5bdb4; border-radius: 30px;
+  color: var(--red-dark); padding: 8px 13px; font-size: 12px; font-weight: 700;
+  background: var(--paper);
+}
+.hero h1 { font-size: clamp(36px, 5vw, 55px); line-height: 1.12; letter-spacing: -1.8px; margin: 20px 0; }
+.hero h1 span { color: var(--red); }
+.hero p { max-width: 500px; color: var(--muted); line-height: 1.8; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+.hero-points { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; font-weight: 700; }
+.hero-points b { color: #198754; }
+.hero-image-wrap { position: relative; min-width: 0; }
+.hero-image {
+  width: 100%; height: 365px; object-fit: cover; display: block;
+  border-radius: 30px; box-shadow: var(--shadow); background: var(--soft);
+}
+.floating-note {
+  position: absolute; bottom: 18px; left: -22px;
+  padding: 14px 17px; border-radius: 16px; background: var(--paper);
+  box-shadow: var(--shadow); max-width: 230px;
+}
+.floating-note strong { display: block; font-size: 14px; }
+.floating-note small { color: var(--muted); }
+
+/* PROMO */
+.promo { background: var(--black); color: white; padding: 19px 0; }
+.promo-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+.promo strong { color: #ff6674; }
+.promo p { margin: 2px 0 0; font-size: 13px; }
+
+/* MENU */
+.toolbar { display: flex; gap: 10px; margin-bottom: 17px; }
+.search-wrap { flex: 1; position: relative; }
+.search-wrap span { position: absolute; left: 14px; top: 11px; }
+.search-wrap input {
+  width: 100%; padding: 12px 13px 12px 39px;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 12px; color: var(--text); outline-color: var(--red);
+}
+.filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 18px 0 25px; }
+.filter-btn {
+  border: 1px solid var(--line); border-radius: 25px; padding: 8px 14px;
+  background: var(--paper); color: var(--text); font-size: 12px; font-weight: 700;
+}
+.filter-btn.active { background: var(--red); border-color: var(--red); color: white; }
+.menu-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 19px; }
+.menu-card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 17px; overflow: hidden; min-width: 0;
+  box-shadow: var(--shadow); transition: transform .2s;
+}
+.menu-card:hover { transform: translateY(-3px); }
+.menu-image-wrap { position: relative; }
+.menu-image { display: block; width: 100%; height: 165px; object-fit: cover; background: var(--soft); }
+.menu-badge {
+  position: absolute; top: 10px; left: 10px; border-radius: 20px;
+  background: var(--paper); color: var(--red); font-size: 10px;
+  font-weight: 800; padding: 5px 9px;
+}
+.favorite-btn {
+  position: absolute; right: 9px; top: 9px; width: 32px; height: 32px;
+  border: 0; border-radius: 50%; background: var(--paper); font-size: 17px;
+}
+.favorite-btn.active { color: var(--red); }
+.menu-info { padding: 13px; }
+.menu-info h3 { font-size: 16px; margin: 0 0 5px; }
+.menu-info p { font-size: 12px; min-height: 38px; margin-bottom: 13px; color: var(--muted); }
+.menu-bottom { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+.price { color: var(--red); font-weight: 800; font-size: 14px; white-space: nowrap; }
+.empty-state { text-align: center; padding: 35px; color: var(--muted); grid-column: 1/-1; }
+
+/* KENALAN */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; align-items: center; }
+.about-image { width: 100%; height: 300px; border-radius: 22px; object-fit: cover; background: var(--soft); }
+.about-copy p { color: var(--muted); line-height: 1.8; }
+.benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.benefit { padding: 14px; border: 1px solid var(--line); border-radius: 13px; background: var(--paper); }
+.benefit strong { display: block; font-size: 13px; }
+.benefit small { color: var(--muted); font-size: 11px; }
+
+/* FAVORIT */
+.favorites-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 19px; }
+
+/* KERANJANG */
+.cart-overlay {
+  position: fixed; inset: 0; background: #0008; z-index: 90;
+  opacity: 0; visibility: hidden; transition: .2s;
+}
+.cart-overlay.open { opacity: 1; visibility: visible; }
+.cart-drawer {
+  position: fixed; top: 0; right: 0; height: 100dvh;
+  width: min(440px, 100%); background: var(--cream); color: var(--text);
+  z-index: 91; padding: 22px; overflow-y: auto;
+  transform: translateX(105%); transition: transform .25s;
+}
+.cart-drawer.open { transform: translateX(0); }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.drawer-head h2 { margin: 0; font-size: 23px; }
+.cart-list { padding: 10px 0; }
+.cart-row {
+  display: grid; grid-template-columns: 65px 1fr; gap: 12px;
+  padding: 13px 0; border-bottom: 1px solid var(--line);
+}
+.cart-row img { width: 65px; height: 65px; border-radius: 11px; object-fit: cover; }
+.cart-row h3 { font-size: 14px; margin: 0 0 4px; }
+.cart-row .price { font-size: 13px; }
+.qty-controls { display: flex; align-items: center; gap: 9px; margin-top: 7px; }
+.qty-controls button { width: 27px; height: 27px; border: 1px solid var(--line); border-radius: 7px; background: var(--paper); color: var(--text); }
+.remove-btn { border: 0 !important; color: var(--red) !important; background: transparent !important; margin-left: auto; }
+.summary { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 10px; }
+.summary-line { display: flex; justify-content: space-between; gap: 10px; margin: 9px 0; }
+.summary-line.total { font-size: 19px; font-weight: 800; border-top: 1px dashed var(--line); padding-top: 13px; }
+.checkout-form { margin-top: 17px; display: grid; gap: 10px; }
+.checkout-form label { font-size: 12px; font-weight: 700; }
+.checkout-form input, .checkout-form select {
+  width: 100%; margin-top: 5px; padding: 11px;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--paper); color: var(--text);
+}
+.full { width: 100%; }
+
+/* STRUK */
+.modal-backdrop {
+  position: fixed; inset: 0; background: #0009; z-index: 120;
+  display: none; align-items: center; justify-content: center; padding: 16px;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--cream); color: var(--text); border-radius: 20px;
+  padding: 22px; width: min(460px, 100%); max-height: 90dvh; overflow: auto;
+}
+.receipt {
+  background: white; color: #202020; padding: 23px; border-radius: 5px;
+  font-family: "Courier New", monospace; font-size: 12px;
+}
+.receipt h2 { text-align: center; font-family: Arial, sans-serif; font-size: 22px; }
+.receipt-center { text-align: center; }
+.receipt-divider { border-top: 1px dashed #888; margin: 12px 0; }
+.receipt-item { display: flex; justify-content: space-between; gap: 12px; margin: 7px 0; }
+.receipt-item span:first-child { overflow-wrap: anywhere; }
+.receipt-total { font-weight: bold; font-size: 14px; }
+.receipt-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 15px; }
+
+/* FOOTER & NOTIFIKASI */
+footer { background: var(--black); color: white; padding: 32px 0; }
+.footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+footer p { margin: 5px 0 0; color: #c7c7c7; font-size: 12px; }
+footer a { color: #ff7c88; }
+.toast {
+  position: fixed; z-index: 200; bottom: 20px; left: 50%;
+  transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+  background: var(--black); color: white; border-radius: 12px;
+  padding: 12px 18px; box-shadow: var(--shadow); font-size: 13px;
+  transition: .2s; max-width: 90%; text-align: center;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 850px) {
+  .nav-links { gap: 10px; }
+  .menu-grid, .favorites-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero-grid { gap: 25px; }
+  .hero-image { height: 310px; }
+}
+@media (max-width: 650px) {
+  .nav { min-height: 63px; }
+  .brand-icon { width: 36px; height: 36px; font-size: 19px; }
+  .brand strong { font-size: 12px; }
+  .brand small { font-size: 8px; letter-spacing: 1px; }
+  .nav-links {
+    display: none; position: absolute; top: 63px; left: 0; right: 0;
+    padding: 18px 5%; background: var(--cream);
+    border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 6px 0; }
+  .mobile-toggle { display: inline-block; }
+  .nav-actions { gap: 5px; }
+  .icon-btn { width: 34px; height: 34px; }
+  .hero { padding: 35px 0; }
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 39px; }
+  .hero-image { height: 260px; border-radius: 22px; }
+  .floating-note { left: 10px; bottom: 10px; }
+  .section { padding: 43px 0; }
+  .promo-inner { align-items: flex-start; }
+  .promo p { font-size: 11px; }
+  .promo .btn { padding: 9px; font-size: 11px; flex-shrink: 0; }
+  .toolbar { flex-wrap: wrap; }
+  .toolbar .btn { white-space: nowrap; }
+  .menu-grid, .favorites-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .menu-image { height: 130px; }
+  .menu-info { padding: 10px; }
+  .menu-info h3 { font-size: 14px; }
+  .menu-info p { font-size: 11px; min-height: 50px; }
+  .menu-bottom { flex-wrap: wrap; }
+  .price { font-size: 12px; }
+  .btn-small { padding: 7px 8px; font-size: 11px; }
+  .about-image { height: 230px; }
+  .benefits { gap: 8px; }
+  .footer-inner { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 360px) {
+  .brand { gap: 5px; }
+  .brand strong { font-size: 10px; }
+  .menu-grid, .favorites-grid { gap: 8px; }
+  .menu-info { padding: 8px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#beranda" aria-label="Seoul Kitchen beranda">
+      <span class="brand-icon">🍜</span>
+      <span><strong>SEOUL KITCHEN</strong><small>KOREAN FOOD</small></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#beranda">Beranda</a>
+      <a href="#menu">Menu Korea</a>
+      <a href="#favorit">Favorit ❤️</a>
+      <a href="#tentang">Tentang Kami</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeButton" aria-label="Ganti tema">🌙</button>
+      <button class="icon-btn" id="cartButton" aria-label="Buka keranjang">
+        🛒<span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn mobile-toggle" id="mobileToggle" aria-label="Buka navigasi">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="beranda">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill">🇰🇷 Cita Rasa Korea dalam Setiap Sajian</span>
+        <h1>Nikmati Lezatnya <span>Kuliner Korea</span></h1>
+        <p>Dari Korean fried chicken yang renyah hingga tteokbokki yang pedas menggoda. Temukan makanan favoritmu di Seoul Kitchen!</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#menu">🍜 Jelajahi Menu</a>
+          <a class="btn" href="#tentang">Tentang Kami →</a>
+        </div>
+        <div class="hero-points">
+          <span><b>✓</b> Menu beragam</span>
+          <span><b>✓</b> Pesan praktis</span>
+          <span><b>✓</b> Checkout WhatsApp</span>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img class="hero-image"
+          src="gambar/hero-korean-food.jpg"
+          data-fallback="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=1000&q=85"
+          alt="Hidangan makanan untuk makan bersama">
+        <div class="floating-note">
+          <strong>🥢 Korean Food Time!</strong>
+          <small>Rasa nikmat, suasana hangat.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo">
+    <div class="container promo-inner">
+      <div>
+        <strong>🎁 PROMO SPESIAL SEOUL KITCHEN</strong>
+        <p>Diskon 10% untuk belanja minimal Rp50.000, maksimal potongan Rp10.000!</p>
+      </div>
+      <a href="#menu" class="btn btn-primary">Belanja Sekarang →</a>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Our Korean Menu</span>
+        <h2>Menu Favorit Seoul Kitchen</h2>
+        <p class="muted">Pilih makanan dan minuman favoritmu, lalu masukkan ke keranjang.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span>🔎</span>
+          <input id="searchInput" type="search" placeholder="Cari bibimbap, ramyeon, minuman..." aria-label="Cari menu">
+        </div>
+        <button class="btn" id="showAllButton">Tampilkan Semua</button>
+      </div>
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-category="Semua">Semua Menu</button>
+        <button class="filter-btn" data-category="Makanan">🍜 Makanan</button>
+        <button class="filter-btn" data-category="Camilan">🥟 Camilan</button>
+        <button class="filter-btn" data-category="Minuman">🥤 Minuman</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="favorit">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Your Favorites</span>
+        <h2>Menu Favorit ❤️</h2>
+        <p class="muted">Makanan yang kamu tandai dengan hati akan muncul di sini.</p>
+      </div>
+      <div class="favorites-grid" id="favoritesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="tentang">
+    <div class="container about-grid">
+      <div>
+        <img class="about-image"
+          src="gambar/kenalan-seoul-kitchen.jpg"
+          data-fallback="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85"
+          alt="Suasana restoran Seoul Kitchen">
+      </div>
+      <div class="about-copy">
+        <span class="pill">ANNYEONGHASEYO! 🇰🇷</span>
+        <h2>Kenalan dengan <span style="color:var(--red)">Seoul Kitchen</span></h2>
+        <p>Seoul Kitchen hadir untuk menemani waktu makanmu dengan pilihan makanan dan minuman ala Korea. Pilih menu, atur pesanan, dan lanjutkan checkout dengan mudah melalui WhatsApp.</p>
+        <div class="benefits">
+          <div class="benefit"><strong>🍜 Menu Beragam</strong><small>14 pilihan makanan dan minuman.</small></div>
+          <div class="benefit"><strong>🛒 Belanja Praktis</strong><small>Atur jumlah pesanan dalam keranjang.</small></div>
+          <div class="benefit"><strong>🎁 Promo Menarik</strong><small>Diskon otomatis sesuai ketentuan.</small></div>
+          <div class="benefit"><strong>🧾 Struk Digital</strong><small>Simpan bukti pesanan sebagai PNG.</small></div>
+        </div>
+        <a href="#menu" class="btn btn-primary">Lihat Semua Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontak">
+    <div class="container section-heading">
+      <span class="eyebrow">Contact Us</span>
+      <h2>Siap Menikmati Kuliner Korea?</h2>
+      <p class="muted">Pilih menu favoritmu dan kirim pesanan langsung melalui WhatsApp.</p>
+      <button class="btn btn-primary" id="contactButton">💬 Hubungi Kami</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="brand" href="#beranda">
+      <span class="brand-icon">🍜</span>
+      <span><strong>SEOUL KITCHEN</strong><small>KOREAN FOOD</small></span>
+    </a>
+    <div>
+      <strong>Hubungi Kami</strong>
+      <p>Pesan melalui WhatsApp dan nikmati kuliner Korea.</p>
+      <p>© <span id="year"></span> Seoul Kitchen. Selamat menikmati!</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang belanja" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>🛒 Keranjang Belanja</h2>
+    <button class="icon-btn" id="closeCart" aria-label="Tutup keranjang">✕</button>
+  </div>
+  <div class="cart-list" id="cartList"></div>
+  <div class="summary">
+    <div class="summary-line"><span>Subtotal</span><strong id="subtotal">Rp0</strong></div>
+    <div class="summary-line"><span>Diskon promo</span><strong id="discount">Rp0</strong></div>
+    <div class="summary-line total"><span>Total</span><span id="total">Rp0</span></div>
+    <small class="muted">Promo 10% untuk subtotal minimal Rp50.000, potongan maksimal Rp10.000.</small>
+  </div>
+  <form class="checkout-form" id="checkoutForm">
+    <label>Nama pemesan
+      <input id="customerName" type="text" placeholder="Masukkan nama kamu" required maxlength="60">
+    </label>
+    <label>Metode pengambilan
+      <select id="orderMethod">
+        <option value="Ambil sendiri">Ambil sendiri</option>
+        <option value="Pengantaran">Pengantaran</option>
+      </select>
+    </label>
+    <label>Catatan pesanan (opsional)
+      <input id="orderNote" type="text" placeholder="Contoh: tidak pedas" maxlength="200">
+    </label>
+    <button type="submit" class="btn btn-primary full">💬 Checkout via WhatsApp</button>
+    <button type="button" class="btn full" id="clearCart">Kosongkan Keranjang</button>
+  </form>
+</aside>
+
+<div class="modal-backdrop" id="receiptModal" role="dialog" aria-modal="true" aria-label="Struk pesanan">
+  <div class="modal">
+    <div class="drawer-head">
+      <h2>🧾 Struk Digital</h2>
+      <button class="icon-btn" id="closeReceipt" aria-label="Tutup struk">✕</button>
+    </div>
+    <p class="muted" style="font-size:12px;margin-top:10px">Struk dibuat untuk pesanan terakhir. Unduh PNG untuk menyimpannya.</p>
+    <div class="receipt" id="receiptContent"></div>
+    <div class="receipt-actions">
+      <button class="btn btn-primary" id="downloadReceipt">⬇ Simpan PNG</button>
+      <button class="btn" id="receiptDone">Selesai</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+"use strict";
+
+/* GANTI DENGAN NOMOR WHATSAPP TOKO KAMU.
+   Gunakan kode negara tanpa tanda +, spasi, atau strip.
+   Contoh: 6281234567890 */
+const WHATSAPP_NUMBER = "085811091394";
+
+const menuItems = [
+  {
+    id: 1, name: "Bibimbap", category: "Makanan", price: 25000,
+    desc: "Nasi Korea dengan sayuran dan telur.",
+    image: "gambar/bibimbap.jpg",
+    fallback: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=700&q=80",
+    badge: "Favorit"
+  },
+  {
+    id: 2, name: "Ramyeon", category: "Makanan", price: 18000,
+    desc: "Mi Korea hangat dengan kuah gurih.",
+    image: "gambar/ramyeon.jpg",
+    fallback: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80",
+    badge: "Populer"
+  },
+  {
+    id: 3, name: "Tteokbokki", category: "Camilan", price: 16000,
+    desc: "Kue beras Korea dengan saus pedas manis.",
+    image: "gambar/tteokbokki.jpg",
+    fallback: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=700&q=80",
+    badge: "Pedas"
+  },
+  {
+    id: 4, name: "Korean Fried Chicken", category: "Makanan", price: 28000,
+    desc: "Ayam renyah dengan saus Korea pilihan.",
+    image: "gambar/korean-fried-chicken.jpg",
+    fallback: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=700&q=80",
+    badge: "Best Seller"
+  },
+  {
+    id: 5, name: "Kimbap", category: "Makanan", price: 15000,
+    desc: "Nasi gulung rumput laut isi sayuran.",
+    image: "gambar/kimbap.jpg",
+    fallback: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=700&q=80",
+    badge: "Favorit"
+  },
+  {
+    id: 6, name: "Jajangmyeon", category: "Makanan", price: 22000,
+    desc: "Mi Korea dengan saus kacang hitam.",
+    image: "gambar/jajangmyeon.jpg",
+    fallback: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80",
+    badge: "Lezat"
+  },
+  {
+    id: 7, name: "Kimchi", category: "Camilan", price: 10000,
+    desc: "Sayuran fermentasi khas Korea.",
+    image: "gambar/kimchi.jpg",
+    fallback: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=80",
+    badge: "Tradisional"
+  },
+  {
+    id: 8, name: "Mandu", category: "Camilan", price: 14000,
+    desc: "Pangsit Korea dengan isian gurih.",
+    image: "gambar/mandu.jpg",
+    fallback: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=700&q=80",
+    badge: "Camilan"
+  },
+  {
+    id: 9, name: "Odeng", category: "Camilan", price: 12000,
+    desc: "Kue ikan Korea dengan kuah hangat.",
+    image: "gambar/odeng.jpg",
+    fallback: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80",
+    badge: "Hangat"
+  },
+  {
+    id: 10, name: "Korean Corn Dog", category: "Camilan", price: 15000,
+    desc: "Sosis bersalut adonan renyah.",
+    image: "gambar/korean-corn-dog.jpg",
+    fallback: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=700&q=80",
+    badge: "Populer"
+  },
+  {
+    id: 11, name: "Bulgogi", category: "Makanan", price: 30000,
+    desc: "Daging berbumbu manis gurih ala Korea.",
+    image: "gambar/bulgogi.jpg",
+    fallback: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80",
+    badge: "Spesial"
+  },
+  {
+    id: 12, name: "Banana Milk", category: "Minuman", price: 12000,
+    desc: "Susu pisang manis ala Korea.",
+    image: "gambar/banana-milk.jpg",
+    fallback: "https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=700&q=80",
+    badge: "Manis"
+  },
+  {
+    id: 13, name: "Strawberry Ade", category: "Minuman", price: 15000,
+    desc: "Minuman stroberi segar dengan sensasi soda.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxfJPXXxDjgghtYFbN04SLDpTZ0KDUPXXh8HZzYAPkwLn9fx8NaF00So0&s=10",
+    fallback: "https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=80",
+    badge: "Segar"
+  },
+  {
+    id: 14, name: "Green Tea Latte", category: "Minuman", price: 18000,
+    desc: "Teh hijau lembut berpadu susu.",
+    image: "gambar/green-tea-latte.jpg",
+    fallback: "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=700&q=80",
+    badge: "Favorit"
+  }
+];
+
+const $ = id => document.getElementById(id);
+const rupiah = amount => new Intl.NumberFormat("id-ID", {
+  style: "currency", currency: "IDR", maximumFractionDigits: 0
+}).format(amount);
+
+let activeCategory = "Semua";
+let searchTerm = "";
+let cart = {};
+let favorites = new Set();
+let lastReceipt = null;
+let toastTimer;
+
+/* Memuat gambar lokal, lalu mencoba URL cadangan jika gagal. */
+function setupImages(root = document) {
+  root.querySelectorAll("img[data-fallback]").forEach(img => {
+    if (img.dataset.fallbackReady) return;
+    img.dataset.fallbackReady = "1";
+    img.addEventListener("error", function () {
+      if (this.dataset.triedFallback === "1") {
+        this.style.visibility = "hidden";
+        this.style.background = "var(--soft)";
+        return;
+      }
+      this.dataset.triedFallback = "1";
+      this.src = this.dataset.fallback;
+    });
+  });
+}
+
+/* Buat kartu menu menggunakan elemen DOM dan teks aman. */
+function createMenuCard(item) {
+  const card = document.createElement("article");
+  card.className = "menu-card";
+
+  const imageWrap = document.createElement("div");
+  imageWrap.className = "menu-image-wrap";
+
+  const img = document.createElement("img");
+  img.className = "menu-image";
+  img.src = item.image;
+  img.dataset.fallback = item.fallback;
+  img.alt = item.name;
+  img.loading = "lazy";
+
+  const badge = document.createElement("span");
+  badge.className = "menu-badge";
+  badge.textContent = item.badge;
+
+  const fav = document.createElement("button");
+  fav.className = "favorite-btn" + (favorites.has(item.id) ? " active" : "");
+  fav.type = "button";
+  fav.textContent = favorites.has(item.id) ? "❤️" : "🤍";
+  fav.setAttribute("aria-label", "Tandai " + item.name + " sebagai favorit");
+  fav.addEventListener("click", () => toggleFavorite(item.id));
+
+  imageWrap.append(img, badge, fav);
+
+  const info = document.createElement("div");
+  info.className = "menu-info";
+
+  const name = document.createElement("h3");
+  name.textContent = item.name;
+
+  const desc = document.createElement("p");
+  desc.textContent = item.desc;
+
+  const bottom = document.createElement("div");
+  bottom.className = "menu-bottom";
+
+  const price = document.createElement("span");
+  price.className = "price";
+  price.textContent = rupiah(item.price);
+
+  const add = document.createElement("button");
+  add.className = "btn btn-primary btn-small";
+  add.type = "button";
+  add.textContent = "+ Tambah";
+  add.addEventListener("click", () => addToCart(item.id));
+
+  bottom.append(price, add);
+  info.append(name, desc, bottom);
+  card.append(imageWrap, info);
+  return card;
+}
+
+function renderMenu() {
+  const grid = $("menuGrid");
+  grid.replaceChildren();
+
+  const filtered = menuItems.filter(item => {
+    const matchesCategory = activeCategory === "Semua" ||
+      item.category === activeCategory;
+    const matchesSearch = (item.name + " " + item.desc + " " + item.category)
+      .toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  if (!filtered.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "Menu tidak ditemukan. Coba kata pencarian lain.";
+    grid.append(empty);
+    return;
+  }
+
+  filtered.forEach(item => grid.append(createMenuCard(item)));
+  setupImages(grid);
+}
+
+function renderFavorites() {
+  const grid = $("favoritesGrid");
+  grid.replaceChildren();
+  const items = menuItems.filter(item => favorites.has(item.id));
+
+  if (!items.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "❤️ Belum ada menu favorit. Tekan ikon hati pada menu pilihanmu.";
+    grid.append(empty);
+    return;
+  }
+
+  items.forEach(item => grid.append(createMenuCard(item)));
+  setupImages(grid);
+}
+
+function toggleFavorite(id) {
+  if (favorites.has(id)) {
+    favorites.delete(id);
+    showToast("Menu dihapus dari favorit.");
+  } else {
+    favorites.add(id);
+    showToast("❤️ Menu ditambahkan ke favorit!");
+  }
+  renderMenu();
+  renderFavorites();
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+  showToast(menuItems.find(item => item.id === id).name + " ditambahkan ke keranjang.");
+}
+
+function changeQuantity(id, amount) {
+  cart[id] = (cart[id] || 0) + amount;
+  if (cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderCart();
+  showToast("Menu dihapus dari keranjang.");
+}
+
+function calculateTotals() {
+  const subtotal = Object.entries(cart).reduce((sum, [id, qty]) => {
+    const item = menuItems.find(m => m.id === Number(id));
+    return sum + (item ? item.price * qty : 0);
+  }, 0);
+
+  const discount = subtotal >= 50000 ? Math.min(Math.round(subtotal * 0.10), 10000) : 0;
+  return { subtotal, discount, total: subtotal - discount };
+}
+
+function renderCart() {
+  const list = $("cartList");
+  list.replaceChildren();
+
+  const ids = Object.keys(cart).filter(id => cart[id] > 0);
+  const count = ids.reduce((sum, id) => sum + cart[id], 0);
+  $("cartCount").textContent = count;
+
+  if (!ids.length) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state";
+    empty.textContent = "Keranjang masih kosong. Yuk, pilih menu favoritmu!";
+    list.append(empty);
+  }
+
+  ids.forEach(id => {
+    const item = menuItems.find(m => m.id === Number(id));
+    if (!item) return;
+
+    const row = document.createElement("div");
+    row.className = "cart-row";
+
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.dataset.fallback = item.fallback;
+    img.alt = item.name;
+
+    const info = document.createElement("div");
+    const title = document.createElement("h3");
+    title.textContent = item.name;
+
+    const price = document.createElement("span");
+    price.className = "price";
+    price.textContent = rupiah(item.price * cart[id]);
+
+    const controls = document.createElement("div");
+    controls.className = "qty-controls";
+
+    const minus = document.createElement("button");
+    minus.type = "button";
+    minus.textContent = "−";
+    minus.setAttribute("aria-label", "Kurangi jumlah");
+    minus.addEventListener("click", () => changeQuantity(Number(id), -1));
+
+    const qty = document.createElement("strong");
+    qty.textContent = cart[id];
+
+    const plus = document.createElement("button");
+    plus.type = "button";
+    plus.textContent = "+";
+    plus.setAttribute("aria-label", "Tambah jumlah");
+    plus.addEventListener("click", () => changeQuantity(Number(id), 1));
+
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "remove-btn";
+    remove.textContent = "Hapus";
+    remove.addEventListener("click", () => removeFromCart(Number(id)));
+
+    controls.append(minus, qty, plus, remove);
+    info.append(title, price, controls);
+    row.append(img, info);
+    list.append(row);
+  });
+
+  setupImages(list);
+
+  const totals = calculateTotals();
+  $("subtotal").textContent = rupiah(totals.subtotal);
+  $("discount").textContent = "−" + rupiah(totals.discount);
+  $("total").textContent = rupiah(totals.total);
+  $("checkoutForm").querySelector('button[type="submit"]').disabled = count === 0;
+}
+
+function openCart() {
+  $("cartDrawer").classList.add("open");
+  $("cartOverlay").classList.add("open");
+  $("cartDrawer").setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+function closeCart() {
+  $("cartDrawer").classList.remove("open");
+  $("cartOverlay").classList.remove("open");
+  $("cartDrawer").setAttribute("aria-hidden", "true");
+  if (!$("receiptModal").classList.contains("open")) {
+    document.body.style.overflow = "";
+  }
+}
+function showToast(message) {
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
+}
+
+function formatDate(date) {
+  return new Intl.DateTimeFormat("id-ID", {
+    dateStyle: "medium", timeStyle: "short"
+  }).format(date);
+}
+
+function buildReceipt(order) {
+  const content = $("receiptContent");
+  content.replaceChildren();
+
+  const heading = document.createElement("h2");
+  heading.textContent = "SEOUL KITCHEN";
+  const tagline = document.createElement("div");
+  tagline.className = "receipt-center";
+  tagline.textContent = "KOREAN FOOD • STRUK PESANAN";
+
+  const divider = () => {
+    const line = document.createElement("div");
+    line.className = "receipt-divider";
+    return line;
+  };
+
+  content.append(heading, tagline, divider());
+
+  [
+    ["No. Pesanan", order.id],
+    ["Tanggal", formatDate(order.date)],
+    ["Nama", order.name],
+    ["Pengambilan", order.method]
+  ].forEach(([label, value]) => {
+    const row = document.createElement("div");
+    row.className = "receipt-item";
+    const left = document.createElement("span");
+    left.textContent = label;
+    const right = document.createElement("span");
+    right.textContent = value;
+    row.append(left, right);
+    content.append(row);
+  });
+
+  content.append(divider());
+
+  order.items.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "receipt-item";
+    const left = document.createElement("span");
+    left.textContent = item.name + " x" + item.qty;
+    const right = document.createElement("span");
+    right.textContent = rupiah(item.price * item.qty);
+    row.append(left, right);
+    content.append(row);
+  });
+
+  content.append(divider());
+
+  [
+    ["Subtotal", rupiah(order.subtotal)],
+    ["Diskon", "−" + rupiah(order.discount)],
+    ["TOTAL", rupiah(order.total)]
+  ].forEach(([label, value], index) => {
+    const row = document.createElement("div");
+    row.className = "receipt-item" + (index === 2 ? " receipt-total" : "");
+    const left = document.createElement("span");
+    left.textContent = label;
+    const right = document.createElement("span");
+    right.textContent = value;
+    row.append(left, right);
+    content.append(row);
+  });
+
+  content.append(divider());
+  const thanks = document.createElement("div");
+  thanks.className = "receipt-center";
+  thanks.textContent = "Terima kasih telah memesan!";
+  content.append(thanks);
+}
+
+function openReceipt(order) {
+  buildReceipt(order);
+  $("receiptModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+function closeReceipt() {
+  $("receiptModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+/* Menggambar struk ke PNG menggunakan Canvas, tanpa library tambahan. */
+function downloadReceiptPNG(order) {
+  if (!order) {
+    showToast("Belum ada struk yang bisa disimpan.");
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  const width = 720;
+  const pad = 42;
+  const lineHeight = 34;
+  const rows = 9 + order.items.length;
+  const height = 220 + rows * lineHeight + 80;
+  canvas.width = width;
+  canvas.height = height;
+
+  ctx.fillStyle = "#fffaf4";
+  ctx.fillRect(0, 0, width, height);
+  ctx.fillStyle = "#ed3547";
+  ctx.fillRect(0, 0, width, 14);
+
+  let y = 65;
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#191919";
+  ctx.font = "bold 36px Arial";
+  ctx.fillText("SEOUL KITCHEN", width / 2, y);
+  y += 32;
+  ctx.font = "18px Arial";
+  ctx.fillStyle = "#ed3547";
+  ctx.fillText("KOREAN FOOD • STRUK PESANAN", width / 2, y);
+  y += 26;
+
+  ctx.strokeStyle = "#b9a89c";
+  ctx.setLineDash([7, 6]);
+  ctx.beginPath();
+  ctx.moveTo(pad, y);
+  ctx.lineTo(width - pad, y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  y += 35;
+
+  function drawLine(left, right, bold = false, size = 20) {
+    ctx.font = (bold ? "bold " : "") + size + "px Arial";
+    ctx.fillStyle = "#202020";
+    ctx.textAlign = "left";
+    ctx.fillText(String(left), pad, y, 400);
+    ctx.textAlign = "right";
+    ctx.fillText(String(right), width - pad, y, 300);
+    y += lineHeight;
+  }
+
+  drawLine("No. Pesanan", order.id, false, 18);
+  drawLine("Tanggal", formatDate(order.date), false, 18);
+  drawLine("Nama", order.name, false, 18);
+  drawLine("Pengambilan", order.method, false, 18);
+  y += 8;
+
+  ctx.strokeStyle = "#b9a89c";
+  ctx.setLineDash([7, 6]);
+  ctx.beginPath();
+  ctx.moveTo(pad, y);
+  ctx.lineTo(width - pad, y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  y += 28;
+
+  order.items.forEach(item => {
+    drawLine(item.name + " x" + item.qty, rupiah(item.price * item.qty), false, 18);
+  });
+
+  y += 7;
+  ctx.strokeStyle = "#b9a89c";
+  ctx.setLineDash([7, 6]);
+  ctx.beginPath();
+  ctx.moveTo(pad, y);
+  ctx.lineTo(width - pad, y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  y += 30;
+
+  drawLine("Subtotal", rupiah(order.subtotal), false, 20);
+  drawLine("Diskon", "−" + rupiah(order.discount), false, 20);
+  drawLine("TOTAL", rupiah(order.total), true, 25);
+  y += 22;
+
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#ed3547";
+  ctx.font = "bold 21px Arial";
+  ctx.fillText("Terima kasih telah memesan!", width / 2, y);
+
+  canvas.toBlob(blob => {
+    if (!blob) {
+      showToast("Gagal membuat gambar struk. Coba lagi.");
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "struk-seoul-kitchen-" + order.id + ".png";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    showToast("Struk PNG diunduh. Periksa folder Unduhan/Galeri.");
+  }, "image/png");
+}
+
+$("checkoutForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const ids = Object.keys(cart).filter(id => cart[id] > 0);
+  if (!ids.length) {
+    showToast("Keranjang masih kosong.");
+    return;
+  }
+
+  const name = $("customerName").value.trim();
+  if (!name) {
+    showToast("Masukkan nama pemesan terlebih dahulu.");
+    $("customerName").focus();
+    return;
+  }
+
+  if (!/^\d{9,15}$/.test(WHATSAPP_NUMBER) || WHATSAPP_NUMBER === "6281234567890") {
+    showToast("Ganti WHATSAPP_NUMBER di kode dengan nomor toko kamu.");
+    return;
+  }
+
+  const totals = calculateTotals();
+  const order = {
+    id: "SK-" + Date.now().toString().slice(-8),
+    date: new Date(),
+    name,
+    method: $("orderMethod").value,
+    note: $("orderNote").value.trim(),
+    items: ids.map(id => {
+      const item = menuItems.find(m => m.id === Number(id));
+      return { id: item.id, name: item.name, price: item.price, qty: cart[id] };
+    }),
+    ...totals
+  };
+
+  lastReceipt = order;
+
+  let message = "🍜 *PESANAN SEOUL KITCHEN*\\n";
+  message += "No: " + order.id + "\\n";
+  message += "Nama: " + order.name + "\\n";
+  message += "Pengambilan: " + order.method + "\\n\\n";
+  message += "*Daftar pesanan:*\\n";
+  order.items.forEach(item => {
+    message += "• " + item.name + " x" + item.qty + " = " +
+      rupiah(item.price * item.qty) + "\\n";
+  });
+  message += "\\nSubtotal: " + rupiah(order.subtotal);
+  message += "\\nDiskon: −" + rupiah(order.discount);
+  message += "\\n*TOTAL: " + rupiah(order.total) + "*";
+  if (order.note) message += "\\nCatatan: " + order.note;
+  message += "\\n\\nMohon konfirmasi pesanan saya. Terima kasih!";
+
+  const whatsappURL = "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+
+  closeCart();
+  openReceipt(order);
+
+  /* WhatsApp dibuka setelah pengguna menekan tombol checkout. */
+  const newWindow = window.open(whatsappURL, "_blank");
+  if (!newWindow) {
+    const link = document.createElement("a");
+    link.href = whatsappURL;
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.click();
+  }
+
+  /* Pesanan tidak langsung dihapus; pengguna bisa mengunduh struk dahulu. */
+});
+
+$("downloadReceipt").addEventListener("click", () => downloadReceiptPNG(lastReceipt));
+$("closeReceipt").addEventListener("click", closeReceipt);
+$("receiptDone").addEventListener("click", closeReceipt);
+$("receiptModal").addEventListener("click", event => {
+  if (event.target === $("receiptModal")) closeReceipt();
+});
+
+$("cartButton").addEventListener("click", openCart);
+$("closeCart").addEventListener("click", closeCart);
+$("cartOverlay").addEventListener("click", closeCart);
+$("clearCart").addEventListener("click", () => {
+  if (!Object.keys(cart).length) {
+    showToast("Keranjang sudah kosong.");
+    return;
+  }
+  if (confirm("Yakin ingin mengosongkan keranjang?")) {
+    cart = {};
+    renderCart();
+    showToast("Keranjang sudah dikosongkan.");
+  }
+});
+
+$("searchInput").addEventListener("input", event => {
+  searchTerm = event.target.value.trim();
+  renderMenu();
+});
+$("showAllButton").addEventListener("click", () => {
+  activeCategory = "Semua";
+  searchTerm = "";
+  $("searchInput").value = "";
+  $("filters").querySelectorAll("[data-category]").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.category === "Semua");
+  });
+  renderMenu();
+});
+
+$("filters").addEventListener("click", event => {
+  const button = event.target.closest("[data-category]");
+  if (!button) return;
+  activeCategory = button.dataset.category;
+  $("filters").querySelectorAll("[data-category]").forEach(btn => {
+    btn.classList.toggle("active", btn === button);
+  });
+  renderMenu();
+});
+
+$("themeButton").addEventListener("click", () => {
+  const dark = document.body.classList.toggle("dark");
+  $("themeButton").textContent = dark ? "☀️" : "🌙";
+  $("themeButton").setAttribute("aria-label", dark ? "Aktifkan mode terang" : "Aktifkan mode gelap");
+  document.querySelector('meta[name="theme-color"]').content = dark ? "#191919" : "#fff8f0";
+  try { localStorage.setItem("seoul-kitchen-theme", dark ? "dark" : "light"); } catch {}
+});
+
+$("mobileToggle").addEventListener("click", () => {
+  $("navLinks").classList.toggle("open");
+});
+$("navLinks").querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => $("navLinks").classList.remove("open"));
+});
+
+$("contactButton").addEventListener("click", () => {
+  if (!/^\d{9,15}$/.test(WHATSAPP_NUMBER) || WHATSAPP_NUMBER === "+6285811091394") {
+    showToast("Atur nomor WhatsApp toko pada variabel WHATSAPP_NUMBER.");
+    return;
+  }
+  window.open("https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent("Halo Seoul Kitchen, saya ingin bertanya tentang menu."), "_blank");
+});
+
+$("year").textContent = new Date().getFullYear();
+
+/* Mulai dengan tampilan terang, atau gunakan pilihan tema yang tersimpan. */
+try {
+  if (localStorage.getItem("seoul-kitchen-theme") === "dark") {
+    document.body.classList.add("dark");
+    $("themeButton").textContent = "☀️";
+    document.querySelector('meta[name="theme-color"]').content = "#191919";
+  }
+} catch {}
+
+setupImages();
+renderMenu();
+renderFavorites();
+renderCart();
+</script>
+</body>
+</html>
